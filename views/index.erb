@@ -1,0 +1,23 @@
+<div Class='map'>
+	<% @hex.each_with_index do |row,index_row| %> 
+	<%if(index_row.even?) %>
+	<div class='hex-row'>
+	<%else%>
+	<div class='hex-row even'>
+	<%end %>
+		<%	row.each_with_index do |tile,index_tile| %>
+			<%if tile.is_a?(Hash)%>
+			<div class="hex" eventtype=<%= tile["type"].to_s%> eventname=<%= tile["name"]%> row=<%=index_row.to_s%> tile=<%=index_tile.to_s%> <%= "esplorated="+@esploration[index_row][index_tile].to_s if(@esploration[index_row][index_tile]!=0)%>>
+			<%else%>
+			<div class="hex" row=<%=index_row.to_s%> tile=<%=index_tile.to_s%> <%= "esplorated="+@esploration[index_row][index_tile].to_s if(@esploration[index_row][index_tile]!=0)%>>
+
+			<%end%>
+				<div class="text"><%=index_row.to_s+"-"+index_tile.to_s%></div>
+				<div class="top"></div>
+				<div class="middle"></div>
+				<div class="bottom"></div>
+			</div>
+		<%end %>
+	</div>
+	<%end %>
+</div>
