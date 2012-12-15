@@ -1,9 +1,10 @@
 require 'sinatra'
+require 'erubis'
 
 events=[[0,1,2,3,4,5,6,7],
-		[0,1,2,3,4,{"type"=>"structure","name"=>"oleg"},6,7],
-		[0,1,2,3,4,5,6,7],
-		[0,1,2,3,4,5,6,7],
+		[0,{"type"=>"tomb","name"=>"Barbarian Cairn"},2,{"type"=>"trap","name"=>"Trap-Filled Glade"},4,{"type"=>"structure","name"=>"Oleg's Trade Post"},{"type"=>"hut","name"=>"Bokken's Hut"},7],
+		[0,1,{"type"=>"tomb","name"=>"Dead Trapper"},{"type"=>"monster","name"=>"Fairy Nest"},{"type"=>"plant","name"=>"Raddish Patch"},{"type"=>"monster","name"=>"Spider's Nest"},6,7],
+		[0,1,{"type"=>"landmark","name"=>"Frog Pond"},{"type"=>"ruin","name"=>"Temple of Elk"},{"type"=>"bridge","name"=>"Thorn River Camp"},5,6,7],
 		[0,1,2,3,4,5,6,7],
 		[0,1,2,3,4,5,6,7],
 		[0,1,2,3,4,5,6,7],
@@ -30,7 +31,7 @@ get '/' do
   @page_title = "Test hex"
   @hex=events
   @esploration=discovery
-  erb :index
+  erubis :index
 end
 
 get '/hexstatus/:row/:tile/:status' do
