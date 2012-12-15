@@ -75,6 +75,7 @@ $(document).ready(function() {
 			$(this).removeAttr('esplorated');
 			$(this).children().fadeTo( 1000, 1 );
 			$(this).children('.text').text($(this).attr('row')+"-"+$(this).attr('tile'));
+			$.get("/hexstatus/"+$(this).attr('row')+"/"+$(this).attr('tile')+"/reset");
 		});
 	});
 
@@ -85,6 +86,7 @@ $(document).ready(function() {
 				if(evento === undefined){
 					$(this).css('background-image','');
 					$(this).attr( 'esplorated', 'yes' );
+					$.get("/hexstatus/"+$(this).attr('row')+"/"+$(this).attr('tile')+"/yes");
 				} else {
 		   				 $(this).attr( 'esplorated', 'yes' );
 		   				 $(this).css('background-image','url(images/'+evento+'.gif)');
@@ -93,6 +95,7 @@ $(document).ready(function() {
 		   				 $(this).css('background-size','30%');
 		   				 $(this).children('.text').fadeTo(1000,1);
 		   				 $(this).children('.text').text($(this).attr('eventname'));
+		   				 $.get("/hexstatus/"+$(this).attr('row')+"/"+$(this).attr('tile')+"/yes");
 				}
 		});
 	});

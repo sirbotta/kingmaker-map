@@ -34,7 +34,7 @@ get '/' do
 end
 
 get '/hexstatus/:row/:tile/:status' do
-  discovery[params[:row].to_i][params[:tile].to_i]=params[:status]
+  discovery[params[:row].to_i][params[:tile].to_i]=(params[:status] == "reset" ? 0 : params[:status])
   "updated row:"+params[:row]+" tile:"+params[:tile]+" with "+params[:status]
 end
 
